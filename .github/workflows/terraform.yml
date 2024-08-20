@@ -40,6 +40,12 @@ jobs:
         id: init 
         run: terraform init -backend-config="bucket=$BUCKET_TF_STATE"
 
+      - name: Terraform destroy 
+        run: terraform destroy 
+      
+      - name: Exit code
+        run: exit 1
+        
       - name: Terraform format 
         id: fmt 
         run: terraform fmt -check 
@@ -74,7 +80,7 @@ jobs:
         if: steps.apple.outcome == 'success'
         run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.EKS_CLUSTER }}
 
-      - name: Install Ingress Controller 
+      - name: Install Ingress Controller
         if: steps.apple.outcome == 'success' && steps.getconfig.outcome == 'success'
         run: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.2/deploy/static/provider/baremetal/deploy.yaml
 
