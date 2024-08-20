@@ -11,6 +11,7 @@ variable "clusterName" {
 }
 
 variable "brain" {
-  type = string
+  type        = string
   description = "A string, second version"
+  default     = "string"
 }
