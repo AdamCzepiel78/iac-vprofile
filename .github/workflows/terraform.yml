@@ -40,11 +40,11 @@ jobs:
         id: init 
         run: terraform init -backend-config="bucket=$BUCKET_TF_STATE"
 
-      - name: Terraform destroy 
-        run: terraform destroy -auto-approve
+      # - name: Terraform destroy 
+      #   run: terraform destroy -auto-approve
       
-      - name: Exit code
-        run: exit 1
+      # - name: Exit code
+      #   run: exit 1
 
       - name: Terraform format 
         id: fmt 
