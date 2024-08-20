@@ -9,9 +9,3 @@ variable "clusterName" {
   type        = string
   default     = "aczvprofile-eks"
 }
-
-variable "brain" {
-  type        = string
-  description = "A string, second version"
-  default     = "string"
-}
